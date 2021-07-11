@@ -1,6 +1,4 @@
 FROM kalilinux/kali-rolling
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TERM xterm-256color
 RUN apt-get update && apt upgrade -y && apt-get install sudo -y
 
 RUN apt-get install -y\
@@ -56,8 +54,5 @@ WORKDIR /root/bot
 RUN apt-get autoremove --purge
 RUN pip3 install --upgrade pip setuptools 
 RUN pip3 install --upgrade pip
-RUN if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi 
-RUN if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi 
 RUN rm -r /root/.cache
-RUN /install.sh
 CMD ["python","-m","hunter"]
