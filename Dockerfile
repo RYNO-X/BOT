@@ -59,5 +59,4 @@ RUN pip3 install --upgrade pip
 RUN if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi 
 RUN if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi 
 RUN rm -r /root/.cache
-RUN pip install -r /root/bot/requirements.txt
 CMD ["python","-m","hunter"]
