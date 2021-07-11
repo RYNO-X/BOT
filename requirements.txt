@@ -8,6 +8,7 @@ coffeehouse==2.2.4
 colour
 covid
 cowpy
+redis
 cryptg
 csvfaker
 DateTime
