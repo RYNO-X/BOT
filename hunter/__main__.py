@@ -3,8 +3,6 @@ import glob
 from pathlib import Path
 import traceback
 import sys
-import os
-os.system("pip install -r requirements.txt")
 
 path = "hunter/plugins/*.py"
 files = glob.glob(path)

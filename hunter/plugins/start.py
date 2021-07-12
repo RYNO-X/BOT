@@ -3,6 +3,13 @@ from . import *
 
 @bot_cmd("start ?(.*)")
 async def start(e):
+    chat = await e.get_chat()
+    chat_id = chat.id
+    if chat_id not in all_chats():
+        print(chat_id)
+        hunter = all_chats()
+        hunter.append(chat_id)
+        db.set("CHATS", list_str(hunter))
     PIC = "http://telegra.ph/file/2878408d913ba97309431.jpg"
     uname = (await bot.get_me()).username
     if e.is_group:

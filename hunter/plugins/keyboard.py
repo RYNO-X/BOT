@@ -8,9 +8,12 @@ async def add(e):
     if not e.is_group:
         return
     if str(e.sender_id) in all_sudo():
-        hunter = e.pattern_match.group(1)
-        text.append(hunter)
-        msg = await bot.send_message(e.chat_id, "**Done**\nNow You Can Add More Button Or Start By /go")
+        try:
+            hunter = e.pattern_match.group(1)
+            text.append(hunter)
+            await e.reply("**Done**\nNow You Can Add More Button Or Start By /go")
+        except Exception as x:
+            await e.reply(f"Error {str(x)}")
     else:
         await e.reply("**Go Away**")
 
@@ -107,8 +110,21 @@ async def rem(event):
             [Button.text(text[8], resize=False)], 
             [Button.text(text[9], resize=False)]
             ]
-        )
-        print(text)
+            )
+        if len(text) > 10:
+            await event.reply("Cant Add More Then 10 Buttons")
+            await bot.send_message(event.chat_id, "**Enjoy**", buttons=[
+            [Button.text(text[0], resize=False)], 
+            [Button.text(text[1], resize=False)], 
+            [Button.text(text[2], resize=False)], 
+            [Button.text(text[3], resize=False)], 
+            [Button.text(text[4], resize=False)], 
+            [Button.text(text[5], resize=False)], 
+            [Button.text(text[6], resize=False)], 
+            [Button.text(text[8], resize=False)], 
+            [Button.text(text[9], resize=False)]
+            ]
+            )
 
     else:
         await event.reply("**Go Away**")
@@ -131,7 +147,7 @@ async def rem(event):
         return
     if str(event.sender_id) in all_sudo():
         for x in text:
-            a = f"x\n"
+            a = f"{x}\n"
         await event.reply(a)
     else:
         await event.reply("**Go Away**")

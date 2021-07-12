@@ -63,23 +63,22 @@ START_TIME = datetime.now()
 try:
     db.ping()
 except BaseException:
-    db.ping()
-#     ok = []
-#     LOGS.info("Can't connect to Database.... Restarting....")
-#     for x in range(1, 6):
-#         db = connect_redis()
-#         time.sleep(5)
-#         try:
-#             if db.ping():
-#                 ok.append("ok")
-#                 break
-#         except BaseException:
-#             LOGS.info(f"Database Connection Failed ...  Trying To Reconnect {x}/5 ..")
-#     if not ok:
-#         LOGS.info("Database Connection Failed.....")
-#         exit()
-#     else:
-#         LOGS.info("Reconnected To Server Succesfully")
+    ok = []
+    LOGS.info("Can't connect to Database.... Restarting....")
+    for x in range(1, 6):
+        db = connect_redis()
+        time.sleep(5)
+        try:
+            if db.ping():
+                ok.append("ok")
+                break
+        except BaseException:
+            LOGS.info(f"Database Connection Failed ...  Trying To Reconnect {x}/5 ..")
+    if not ok:
+        LOGS.info("Database Connection Failed.....")
+        exit()
+    else:
+        LOGS.info("Reconnected To Server Succesfully")
 
 LOGS.info("Succesfully Established Connection With DataBase.")
 

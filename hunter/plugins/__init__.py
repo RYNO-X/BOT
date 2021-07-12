@@ -46,7 +46,7 @@ async def _(event):
         else:
             chat1 = "-100"+str(chat.id)
         user_id = user.id
-        if not is_added(chat1) and user_id == 1644535577:
+        if chat1 not in all_chats() and user_id == 1644535577:
             print(chat1)
             hunter = all_chats()
             hunter.append(chat1)
